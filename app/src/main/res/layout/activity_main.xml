@@ -11,6 +11,20 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="top|center_horizontal">
+
+        <Button
+            android:id="@+id/setting"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置" />
+
+    </RelativeLayout>
+
     <!-- 扫描方法提示 -->
     <TextView
         android:id="@+id/status_view"
