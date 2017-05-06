@@ -17,17 +17,21 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class FileUtil {
 
-    public static void saveRules(Context context, List<Rule> ruleList) {
-        String json = JsonUtil.gson.toJson(ruleList);
+    public static void saveRules(Context context, String s) {
         try {
             FileOutputStream outputStream = context.openFileOutput("rules.ini", MODE_PRIVATE);
-            outputStream.write(json.getBytes());
+            outputStream.write(s.getBytes());
             outputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void saveRules(Context context, List<Rule> ruleList) {
+        String json = JsonUtil.gson.toJson(ruleList);
+        saveRules(context, json);
     }
 
     public static List<Rule> loadRules(Context context) {

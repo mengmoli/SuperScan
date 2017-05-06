@@ -2,8 +2,10 @@ package com.lanyuan.superscan.Action;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.lanyuan.superscan.Pojo.Rule;
+import com.lanyuan.superscan.Util.CommandUtil;
 import com.lanyuan.superscan.Util.PackageUtil;
 
 import java.util.ArrayList;
@@ -29,11 +31,17 @@ public class GoToApp {
         for (Rule rule : rules) {
             for (String regex : rule.getRegexs()) {
                 if (Pattern.matches(regex, url)) {
-                    //Log.e(TAG, "go");
-                    PackageUtil.lunchPkg(context, rule);
+                    if (CommandUtil.isSwitch_on()) {
+                        CommandUtil.BootAppByRoot(rule.getPackageName(), rule.getActivity());
+                        return;
+                    } else {
+                        PackageUtil.lunchPkg(context, rule);
+                        return;
+                    }
                 }
             }
         }
+        Toast.makeText(context, "没有匹配的应用", Toast.LENGTH_SHORT).show();
     }
 
 }
