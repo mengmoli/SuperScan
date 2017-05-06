@@ -1,5 +1,6 @@
 package com.lanyuan.superscan.UI;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ public class RuleDialog extends Dialog {
     public final static int RULES_UPDATE = 2;
 
     private RulesActivity rulesActivity;
-    private Button yes, no;
+    private Button yes, no, description;
     private EditText name, package_name, activity, regexs;
     private Rule rule;
     private int position;
@@ -65,8 +66,7 @@ public class RuleDialog extends Dialog {
                 rule.setPackageName(package_name.getText().toString());
                 rule.setActivity(activity.getText().toString());
                 if (!rule.getName().equals("") && !rule.getPackageName().equals("") && !regexs.getText().toString().equals("")) {
-                    List<String> list = new ArrayList<String>();
-                    list.add(regexs.getText().toString());
+                    List<String> list = String2List(regexs.getText().toString());
                     rule.setRegexs(list);
                     if (flag == RULES_UPDATE)
                         rulesActivity.updateData(rule, position);
@@ -85,6 +85,30 @@ public class RuleDialog extends Dialog {
                 dismiss();
             }
         });
+        description = (Button) findViewById(R.id.description);
+        description.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(activity.getContext());
+                AlertDialog dialog = ab.setTitle("说明")
+                        .setMessage(R.string.description)
+                        .setPositiveButton("确定", null)
+                        .create();
+                dialog.show();
+            }
+        });
+    }
+
+    private List<String> String2List(String regexs) {
+        List<String> regexList = new ArrayList<>();
+        if (regexs.indexOf("\n") != -1) {
+            String[] temp = regexs.split("\n");
+            for (String s : temp)
+                regexList.add(s);
+        } else {
+            regexList.add(regexs);
+        }
+        return regexList;
     }
 
 }

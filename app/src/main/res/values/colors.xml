@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent">#00000000</color>
+    <color name="baseRed">#ff0000</color>
     <color name="baseWrite">#FFFFFF</color>
     <color name="baseBlack">#000000</color>
     <color name="baseGray">#8c8c8c</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="colorAccent">#78909C</color>
 </resources>

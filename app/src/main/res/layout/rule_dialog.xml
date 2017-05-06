@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="match_parent"
-    android:background="@color/baseWrite"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -46,27 +45,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/no"
-            android:layout_width="70dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/description"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/baseWrite"
-            android:text="取消" />
+            android:background="@color/transparent"
+            android:padding="2dp"
+            android:text="说明"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorAccent" />
 
         <Button
+            android:layout_marginRight="20dp"
             android:id="@+id/yes"
-            android:layout_width="70dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/baseWrite"
-            android:text="确认" />
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:padding="2dp"
+            android:text="确认"
+            android:textAlignment="textEnd"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/no"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/yes"
+            android:background="@color/transparent"
+            android:padding="2dp"
+            android:text="取消"
+            android:textAlignment="textEnd"
+            android:textColor="@color/colorAccent" />
+
+    </RelativeLayout>
 
 </LinearLayout>

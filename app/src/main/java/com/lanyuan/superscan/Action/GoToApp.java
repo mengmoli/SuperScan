@@ -1,8 +1,10 @@
 package com.lanyuan.superscan.Action;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.lanyuan.superscan.Pojo.Rule;
+import com.lanyuan.superscan.Util.PackageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,25 +14,23 @@ public class GoToApp {
 
     private final static String TAG = "GoToApp";
 
-    private static ArrayList<Rule> rules;
+    private static List<Rule> rules;
 
-    static {
-        rules = new ArrayList<>();
-        Rule rule = new Rule();
-        rule.setName("微信");
-        rule.setPackageName("com.mm.wechat");
-        List<String> list = new ArrayList<>();
-        list.add("http://weixin.qq.com\\S*");
-        rule.setRegexs(list);
-        rules.add(rule);
+    public static List<Rule> getRules() {
+        return rules;
     }
 
-    public static void go(CharSequence result) {
+    public static void setRules(List<Rule> rules) {
+        GoToApp.rules = rules;
+    }
+
+    public static void go(Context context, CharSequence result) {
         String url = (String) result;
         for (Rule rule : rules) {
             for (String regex : rule.getRegexs()) {
                 if (Pattern.matches(regex, url)) {
-                    Log.e(TAG, rule.getName());
+                    //Log.e(TAG, "go");
+                    PackageUtil.lunchPkg(context, rule);
                 }
             }
         }

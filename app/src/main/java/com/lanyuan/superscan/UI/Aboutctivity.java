@@ -1,29 +1,27 @@
 package com.lanyuan.superscan.UI;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.lanyuan.superscan.R;
-import com.lanyuan.superscan.Util.UpdateUtil;
 
-public class SettingActivity extends AppCompatActivity {
-
-    TextView rules_setting, about,update;
+public class Aboutctivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_about);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("设置");
+        toolbar.setTitle("关于");
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.mipmap.back);
         setSupportActionBar(toolbar);
@@ -31,29 +29,20 @@ public class SettingActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        rules_setting = (TextView) findViewById(R.id.rules_setting);
-        rules_setting.setOnClickListener(new View.OnClickListener() {
+        TextView alipay = (TextView) findViewById(R.id.alipay);
+        alipay.setTextIsSelectable(true);
+        alipay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SettingActivity.this, RulesActivity.class));
+                Intent intent= new Intent();
+                intent.setAction("android.intent.action.VIEW");
+                Uri qrcode_url = Uri.parse("alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fqr.alipay.com%2FFKX06852EOBWRJPACOMCF5%3F_s%3Dweb-other");
+                intent.setData(qrcode_url);
+                intent.setClassName("com.eg.android.AlipayGphone","com.alipay.mobile.quinox.LauncherActivity");
+                startActivity(intent);
             }
         });
 
-        update = (TextView) findViewById(R.id.update);
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UpdateUtil.goToAppMarket(getApplicationContext());
-            }
-        });
-
-        about = (TextView) findViewById(R.id.about);
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingActivity.this, Aboutctivity.class));
-            }
-        });
     }
 
     @Override
