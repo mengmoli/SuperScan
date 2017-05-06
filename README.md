@@ -13,7 +13,7 @@
 如果你觉得这个应用确实帮上了你的忙，那么你也可以通过搭上一丢丢狗粮来对我表示支持  
 当然啦！五分的评价和Github的fork和star甚至是评论里的一句吐槽都是对我的支持，谢谢  
 噢！对了！如果你也一心想为北部植被和绿化建设出一份力！请在玩蚂蚁森林的你务必加我支付宝好友！滑稽！  
-→ 支付宝: lanyuanxiaoyao@qq.com ←  
+→ 支付宝: [lanyuanxiaoyao@qq.com](https://ds.alipay.com/?from=mobilecodec&scheme=alipays%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fqr.alipay.com%252FFKX06852EOBWRJPACOMCF5%253F_s%253Dweb-other) ←  
 　　　　　↑↑低调的支付宝账号↑↑  
 # 开源
 向所有开源的作者们致敬，umm……每次说这句话总觉得在很不要脸地夸自己，因为本应用开源在https://github.com/lanyuanxiaoyao/SuperScan  
