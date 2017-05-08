@@ -21,7 +21,7 @@ public final class ViewfinderView extends View {
     /** 多长时间刷新一次 */
     private static final long ANIMATION_DELAY = 100L;
     /** 刷新的区域距离frame的距离 */
-    private static final int POINT_SIZE = 6;
+    private static final int POINT_SIZE = 7;
 
     private Context context;
 
@@ -58,7 +58,7 @@ public final class ViewfinderView extends View {
         }
 
         // 缩小边框
-        int padding = dp2px(context, 50);
+        int padding = dp2px(context, 25);
         frame = new Rect(frame.left + padding, frame.top + padding, frame.right - padding, frame.bottom - padding);
 
         int width = canvas.getWidth();

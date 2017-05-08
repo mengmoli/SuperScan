@@ -53,23 +53,23 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
         return cameraManager;
     }
 
+    private Bundle bundle;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
+        bundle = icicle;
+        Log.e("hey","onC");
         // 保持屏幕常亮
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-//        setContentView(R.layout.capture);
 
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
         vibrateManager = new VibrateManager(this);
         ambientLightManager = new AmbientLightManager(this);
 
-        // TODO: 2016/6/12 0012 未完成
-//        requestPermission();
+        requestPermission();
     }
 
     private static final int REQUEST_CODE_REQUEST_CAMERA_PERMISSION = 1;
@@ -78,31 +78,33 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
         int hasCameraPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         if (hasCameraPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_REQUEST_CAMERA_PERMISSION);
+            Toast.makeText(this, "请允许应用申请的摄像头权限用于扫描二维码", Toast.LENGTH_SHORT).show();
+        } else {
+            //initCamera();
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CODE_REQUEST_CAMERA_PERMISSION:
-                if (PackageManager.PERMISSION_GRANTED != grantResults[0]) {
-                    Toast.makeText(this, R.string.err_no_camera_permission, Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE_REQUEST_CAMERA_PERMISSION) {
+            if (PackageManager.PERMISSION_GRANTED == grantResults[0]) {
+                onCreate(bundle);
+            } else {
+                Toast.makeText(this, R.string.err_no_camera_permission, Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
     }
 
     @Override
     protected void onResume() {
+        Log.e("hey","onR");
         super.onResume();
+        //Toast.makeText(this,"如果摄像头打开失败请给手动给予应用相机权限",Toast.LENGTH_LONG).show();
+        initCamera();
+    }
 
-        // CameraManager must be initialized here, not in onCreate(). This is necessary because we don't
-        // want to open the camera driver and measure the screen size if we're going to show the help on
-        // first launch. That led to bugs where the scanning rectangle was the wrong size and partially
-        // off screen.
+    private void initCamera() {
         cameraManager = new CameraManager(getApplication());
 
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
@@ -136,18 +138,21 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 
     @Override
     protected void onPause() {
-        if (handler != null) {
-            handler.quitSynchronously();
-            handler = null;
-        }
-        inactivityTimer.onPause();
-        ambientLightManager.stop();
-        cameraManager.closeDriver();
-        //historyManager = null; // Keep for onActivityResult
-        if (!hasSurface) {
-            SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
-            SurfaceHolder surfaceHolder = surfaceView.getHolder();
-            surfaceHolder.removeCallback(this);
+        Log.e("hey","onP");
+        if (cameraManager != null) {
+            if (handler != null) {
+                handler.quitSynchronously();
+                handler = null;
+            }
+            inactivityTimer.onPause();
+            ambientLightManager.stop();
+            cameraManager.closeDriver();
+            //historyManager = null; // Keep for onActivityResult
+            if (!hasSurface) {
+                SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+                SurfaceHolder surfaceHolder = surfaceView.getHolder();
+                surfaceHolder.removeCallback(this);
+            }
         }
         super.onPause();
     }

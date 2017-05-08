@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">SuperScan</string>
-    <string name="description"><b>名称</b><br />\n规则名称，随意填一个名字即可，推荐填跳转到的应用名<br />\n<br />\n<b>包名</b><br />\n跳转到的应用包名<br />\n如微信，包名为\"com.tencent.mm\"，可以使用”当前Activity“等类似功能的应用获取<br />\n<br />\n<b>Activity</b><br />\n应用中”扫一扫“界面的Activity全名<br />\n如微信扫一扫，Activity为\"com.tencent,mm.plugin.scanner.ui.BaseScanUI\"<br />\n<b>此字段仅ROOT模式下使用，非ROOT用户可不填</b><br />\n<br />\n<b>匹配规则</b><br />\n匹配二维码内容的正则表达式，如有多条正则表达式，请一行写一条表示式，回车换行<br /></string>
+    <string name="app_name">扫二扫</string>
+    <string name="description"><b>名称</b><br />\n规则名称，随意填一个名字即可，推荐填跳转到的应用名<br />\n<br />\n<b>包名</b><br />\n跳转到的应用包名<br />\n如微信，包名为\"com.tencent.mm\"，可以使用”当前Activity“等类似功能的应用获取<br />\n<br />\n<b>Activity</b><br />\n应用中”扫一扫“界面的Activity全名<br />\n如微信扫一扫，Activity为\"com.tencent,mm.plugin.scanner.ui.BaseScanUI\"<br />\n<b>此字段仅ROOT模式下使用，非ROOT用户可不填</b><br />\n<br />\n<b>匹配规则</b><br />\n匹配二维码内容的<b>正则表达式</b>，如有多条正则表达式，请一行写一条表示式，回车换行<br /></string>
     <string name="abou_easy">　　随着生活中对二维码的使用越来越多，每次扫描二维码的时候都不得不先判断是哪个应用，然后再寻找应用，再开打开应用点击扫描二维码，步骤繁多，更不用说每个应用扫描二维码的按钮的位置都不同，有时候确实是让人手忙脚乱\n　　于是本应用应运而生，管它是什么二维码都只需要使用同一个应用扫一下，然后就会自动跳转到相应应用，省去了找应用的步骤（尤其是对于我这种手机上应用特多的人，简直不要太爽），如果你是ROOT用户还可以直接跳转到扫描二维码的界面</string>
     <string name="about_author">　　我是兰缘小妖，一只热爱Android的大学汪，如果你也是开发者或者只是单纯地想对我干一些不可告人的事情，那么……\n　　你可以在这些地方关注到我：\n　　GitHub: https://github.com/lanyuanxiaoyao\n　　Blog: http://lanyuanxiaoyao.com\n　　Email: lanyuanxiaoyao@gmail.com</string>
     <string name="about_donate">　　如果你觉得这个应用确实帮上了你的忙，那么你也可以通过搭上一丢丢狗粮来对我表示支持\n　　当然啦！五分的评价和Github的fork和star甚至是评论里的一句吐槽都是对我的支持，谢谢\n　　噢！对了！如果你也一心想为北部植被和绿化建设出一份力！请在玩蚂蚁森林的你务必加我支付宝好友！滑稽！</string>
