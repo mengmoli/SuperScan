@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".UI.MainActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".UI.SettingActivity" />
         <activity android:name=".UI.RulesActivity" />
-        <activity android:name=".UI.Aboutctivity"></activity>
+        <activity android:name=".UI.Aboutctivity" />
     </application>
 
 </manifest>

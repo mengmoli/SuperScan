@@ -43,7 +43,7 @@ public class RuleDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.rule_dialog);
+        setContentView(R.layout.dialog_rule);
 
         name = (EditText) findViewById(R.id.edit_name);
         package_name = (EditText) findViewById(R.id.edit_package_name);

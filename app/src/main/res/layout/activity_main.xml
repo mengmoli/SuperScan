@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_wechat_capture"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <SurfaceView
         android:id="@+id/preview_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
-    <com.google.zxing.client.android.core.ViewfinderView
-        android:id="@+id/viewfinder_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+    <com.google.zxing.client.android.AutoScannerView
+        android:id="@+id/autoscanner_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -28,26 +31,16 @@
             android:src="@mipmap/setting" />
 
         <ImageButton
-
             android:id="@+id/flashlight"
             android:layout_width="29dp"
             android:layout_height="29dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@id/setting"
+            android:src="@null"
             android:background="@color/transparent"
-            android:scaleType="fitCenter"
-            android:src="@null" />
+            android:scaleType="fitCenter"/>
 
     </RelativeLayout>
 
-    <!-- 扫描方法提示 -->
-    <TextView
-        android:id="@+id/status_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="#00000000"
-        android:text="@string/msg_default_status"
-        android:textColor="#ECF0F1" />
-</merge>
+</RelativeLayout>

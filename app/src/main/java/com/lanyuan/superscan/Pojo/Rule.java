@@ -52,4 +52,9 @@ public class Rule {
         }
         return sb.toString();
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

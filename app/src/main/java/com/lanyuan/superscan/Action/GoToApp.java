@@ -1,6 +1,8 @@
 package com.lanyuan.superscan.Action;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -26,22 +28,34 @@ public class GoToApp {
         GoToApp.rules = rules;
     }
 
-    public static void go(Context context, CharSequence result) {
+    public static boolean go(Context context, CharSequence result) {
         String url = (String) result;
         for (Rule rule : rules) {
             for (String regex : rule.getRegexs()) {
                 if (Pattern.matches(regex, url)) {
                     if (CommandUtil.isSwitch_on()) {
                         CommandUtil.BootAppByRoot(rule.getPackageName(), rule.getActivity());
-                        return;
+                        return true;
                     } else {
                         PackageUtil.lunchPkg(context, rule);
-                        return;
+                        return true;
                     }
                 }
             }
         }
-        Toast.makeText(context, "没有匹配的应用", Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
+    public static void go(Context context, Rule rule) {
+
+        if (CommandUtil.isSwitch_on()) {
+            CommandUtil.BootAppByRoot(rule.getPackageName(), rule.getActivity());
+            return;
+        } else {
+            PackageUtil.lunchPkg(context, rule);
+            return;
+        }
+
     }
 
 }

@@ -7,8 +7,8 @@ android {
         applicationId "com.lanyuan.superscan"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,8 +23,8 @@ android {
 }
 
 dependencies {
-    compile project(':SimpleZXingCore')
     compile files('libs/gson-2.8.0.jar')
+    compile project(':zxinglite')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:cardview-v7:23.4.0'
