@@ -19,7 +19,6 @@ import com.lanyuan.superscan.Pojo.Rule;
 import com.lanyuan.superscan.R;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class FailDialog extends Dialog implements View.OnClickListener {
 

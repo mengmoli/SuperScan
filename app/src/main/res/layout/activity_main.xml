@@ -34,10 +34,21 @@
             android:id="@+id/flashlight"
             android:layout_width="29dp"
             android:layout_height="29dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@id/setting"
-            android:src="@null"
+            android:src="@drawable/flash_off"
+            android:background="@color/transparent"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:id="@+id/scan_picture"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/flashlight"
+            android:src="@mipmap/picture"
             android:background="@color/transparent"
             android:scaleType="fitCenter"/>
 
